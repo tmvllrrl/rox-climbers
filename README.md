@@ -2,6 +2,6 @@
 
 ## Team Members
 
-- Michael Villarreal
+- Michael Villarreal (tmvllrrl@memphis.edu)
 
 - Md Muminul Hossain
