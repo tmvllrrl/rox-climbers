@@ -12,5 +12,5 @@
 #  updated_at        :datetime         not null
 #
 class Photo < ApplicationRecord
-    has_one_attached :route_img
+    has_one_attached :route_image
 end

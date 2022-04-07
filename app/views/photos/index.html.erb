@@ -2,6 +2,10 @@
 
 <br>
 
+<p>
+    <%= link_to 'Add Photo', new_photo_path, class: "btn btn-primary" %>
+</p>
+
 <table class="table table-hover">
     <thead class="thead-dark">
         <tr>
@@ -18,7 +22,7 @@
         <% @photos.each do |photo| %>
             <tr>
                 <td><%= photo.route_title %></td>
-                <td><%= image_tag photo.route_img, class: "w-25" %></td>
+                <td><%= image_tag photo.route_image, class: "w-25" %></td>
                 <td><%= photo.route_grade %></td>
                 <td>Show</td>
                 <td>Edit</td>

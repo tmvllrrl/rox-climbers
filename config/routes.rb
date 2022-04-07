@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   root to: redirect('/photos')
 
   get 'photos', to: 'photos#index', as: 'photos'
+  post 'photos', to: 'photos#create'
+  get 'photos/new', to: 'photos#new', as: 'new_photo'
 
 end
