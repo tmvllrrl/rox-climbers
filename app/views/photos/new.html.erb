@@ -1,0 +1,15 @@
+<h1>Add a Photo</h1>
+
+<%= bootstrap_form_with model: @photo, url: photos_path, method: :post, local: true do |f| %>
+
+    <%= f.text_field :route_title %>
+    <%= f.text_field :route_grade %>
+    <%= f.text_field :route_location %>
+    <%= f.text_area :route_description %>
+    <%= f.text_area :route_style %>
+
+    <%= f.file_field :route_image %>
+
+    <%= f.submit %>
+
+<% end %>

@@ -1,0 +1,34 @@
+<h1>Rox Climber Photos</h1>
+
+<br>
+
+<p>
+    <%= link_to 'Add Photo', new_photo_path, class: "btn btn-primary" %>
+</p>
+
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>Route Name</th>
+            <th>Route Image</th>
+            <th>Route Grade</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @photos.each do |photo| %>
+            <tr>
+                <td><%= photo.route_title %></td>
+                <td><%= image_tag photo.route_image, class: "w-25" %></td>
+                <td><%= photo.route_grade %></td>
+                <td>Show</td>
+                <td>Edit</td>
+                <td>Delete</td>
+            </tr>
+        <% end %>
+    </tbody>
+
+</table>
