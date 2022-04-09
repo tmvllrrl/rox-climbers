@@ -5,6 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+user1 = User.create!(
+    email: "homeuser@gmail.com",
+    password: "password"
+)
+
+user2 = User.create!(
+    email: "muminul@gmail.com",
+    password: "password"
+)
+
 seed1 = Photo.create!(
     route_title: "Hanging",
     route_description: "Pretty fun, but pretty hard!",
