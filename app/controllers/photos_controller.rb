@@ -2,8 +2,15 @@ class PhotosController < ApplicationController
     before_action :authenticate_user!, except: [:index]
 
     def index
-        @photos = Photo.order(:updated_at)
-        render :index
+        if user_signed_in? # If the user is signed in, then display their photos
+            @photos = current_user.photos.order(:updated_at)
+            render :index
+        else # If the user is not signed in, then display a "home page" user's photos
+            @user = User.find(1)
+            @photos = @user.photos.order(:updated_at)
+            render :index
+        end
+        
     end
 
     def new
@@ -12,7 +19,7 @@ class PhotosController < ApplicationController
     end
 
     def create
-        @photo = Photo.new(params.require(:photo).permit(:route_title, :route_grade, :route_location, :route_description, :route_style, :route_image))
+        @photo = current_user.photos.build(params.require(:photo).permit(:route_title, :route_grade, :route_location, :route_description, :route_style, :route_image))
         if @photo.save
             flash[:success] = "Photo Uploaded Succesfully!"
             redirect_to photos_url
