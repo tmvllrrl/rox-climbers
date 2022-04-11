@@ -1,34 +1,25 @@
+<br>
 <h1>Rox Climber Photos</h1>
-
 <br>
 
-<p>
-    <%= link_to 'Add Photo', new_photo_path, class: "btn btn-primary" %>
-</p>
+<div class="container">
+    <div class="row">
+        <% @photos.each_with_index do |photo, index| %>
+            <div class="col p-3">
+                <div class="card" style="width: 18rem;">
+                    <%= image_tag photo.route_image, class: "card-img-top" %>
+                    <div class="card-body">
+                        <h5><%= photo.route_title %></h5>
+                        <h6><%= photo.creator.email %></h6>
+                        <p><%= photo.route_grade %></p>
+                        <a href="#" class="btn btn-primary">Show</a>
+                        <a href="#" class="btn btn-primary">Edit</a>
+                        <a href="#" class="btn btn-primary">Delete</a>
+                    </div>
+                </div>
+            </div>
 
-<table class="table table-hover">
-    <thead class="thead-dark">
-        <tr>
-            <th>Route Name</th>
-            <th>Route Image</th>
-            <th>Route Grade</th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <% @photos.each do |photo| %>
-            <tr>
-                <td><%= photo.route_title %></td>
-                <td><%= image_tag photo.route_image, class: "w-25" %></td>
-                <td><%= photo.route_grade %></td>
-                <td>Show</td>
-                <td>Edit</td>
-                <td>Delete</td>
-            </tr>
+           
         <% end %>
-    </tbody>
-
-</table>
+    </div>
+</div>
