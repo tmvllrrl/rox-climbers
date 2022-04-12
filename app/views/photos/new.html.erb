@@ -1,15 +1,56 @@
+<br>
 <h1>Add a Photo</h1>
+<br>
 
-<%= bootstrap_form_with model: @photo, url: photos_path, method: :post, local: true do |f| %>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script>
+    function showImage(input) {
+        if (input.files && input.files[0]) {
+        var reader = new FileReader();
 
-    <%= f.text_field :route_title %>
-    <%= f.text_field :route_grade %>
-    <%= f.text_field :route_location %>
-    <%= f.text_area :route_description %>
-    <%= f.text_area :route_style %>
+        reader.onload = function (e) {
+            $('#image_upload_id')
+            .attr('src', e.target.result)
+            .width("60vh");
+        };
 
-    <%= f.file_field :route_image %>
+        reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 
-    <%= f.submit %>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <%= image_tag "no_image_preview.jpg", id: "image_upload_id" , style: "width: 60vh" %>
+        </div>
+        <div class="col">
+            <%= bootstrap_form_with model: @photo, url: photos_path, method: :post, local: true do |f| %>
 
-<% end %>
+            <%= f.text_field :route_title %>
+            <%= f.text_field :route_grade %>
+            <%= f.text_field :route_location %>
+
+            <%= f.label :age_label, "Route style"%>
+            <%= f.radio_button :route_style, "Jugs" %>
+            <%= f.radio_button :route_style, "Slopers" %>
+            <%= f.radio_button :route_style, "Crimps" %>
+            <%= f.radio_button :route_style, "Slab" %>
+            <%= f.radio_button :route_style, "Pinches" %>
+            <br>
+            <%= f.text_area :route_description %>
+            
+            <%= f.file_field :route_image, onchange: "showImage(this);" %>
+
+            <%= f.submit %>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+<br>
+<p>
+    <%= link_to "Cancel", photos_path, class: "btn btn-primary" %>
+</p>
+
+<br>

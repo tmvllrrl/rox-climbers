@@ -3,14 +3,45 @@ class PhotosController < ApplicationController
 
     def index
         if user_signed_in? # If the user is signed in, then display their photos
-            @photos = current_user.photos.order(:updated_at)
+            if params[:order] == "updated_at"
+                @photos = current_user.photos.order(created_at: :desc)
+            elsif params[:order] == "route_grade"
+                @photos = current_user.photos.order(:route_grade)
+            elsif params[:order] == "route_location"
+                @photos = current_user.photos.order(:route_location)
+            elsif params[:order] == "route_style"
+                @photos = current_user.photos.order(:route_style)
+            else # Default behavior
+                @photos = current_user.photos.order(created_at: :desc)
+            end
             render :index
         else # If the user is not signed in, then display a "home page" user's photos
             @user = User.find(1)
-            @photos = @user.photos.order(:updated_at)
+
+            if params[:order] == "updated_at"
+                @photos = @user.photos.order(created_at: :desc)
+            elsif params[:order] == "route_grade"
+                @photos = @user.photos.order(:route_grade)
+            elsif params[:order] == "route_location"
+                @photos = @user.photos.order(:route_location)
+            elsif params[:order] == "route_style"
+                @photos = @user.photos.order(:route_style)
+            else # Default behavior
+                @photos = @user.photos.order(created_at: :desc)
+            end
             render :index
         end
-        
+    end
+
+    def index_sort_grade
+        if user_signed_in? # If the user is signed in, then display their photos
+            @photos = current_user.photos.order(:route_grade)
+            render :index
+        else # If the user is not signed in, then display a "home page" user's photos
+            @user = User.find(1)
+            @photos = @user.photos.order(:route_grade)
+            render :index
+        end
     end
 
     def new
