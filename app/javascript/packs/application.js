@@ -20,3 +20,9 @@ document.addEventListener("turbolinks:load", () => {
   $('[data-toggle="popover"]').popover();
   autosize(document.querySelectorAll('textarea'));
 })
+
+document.addEventListener('turbolinks:load', function() {
+  var fileInput = document.querySelector('.custom-file-input');
+  var fileLabel = document.querySelector('.custom-file-label');
+  fileInput.addEventListener("change", (e) => {fileLabel.textContent = e.target.value.replace(/^.*[\\\/]/, ''); });
+}, false);
