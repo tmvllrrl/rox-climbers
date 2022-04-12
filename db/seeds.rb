@@ -23,7 +23,7 @@ seed1 = Photo.create!(
     route_description: "Pretty fun, but pretty hard!",
     route_grade: "V3",
     route_location: "Middle Front",
-    route_style: "Cylinder Slopers",
+    route_style: "Slopers",
     creator: user1
 )
 seed1.route_image.attach(io: File.open('public/seed1.jpg'), filename: 'seed1.jpg', content_type: 'image/jpg')
@@ -33,7 +33,7 @@ seed2 = Photo.create!(
     route_description: "Pretty fun, but pretty hard!",
     route_grade: "V3",
     route_location: "Middle Front",
-    route_style: "Cylinder Slopers",
+    route_style: "Slopers",
     creator: user1
 )
 seed2.route_image.attach(io: File.open('public/seed2.jpg'), filename: 'seed2.jpg', content_type: 'image/jpg')
@@ -43,7 +43,7 @@ seed3 = Photo.create!(
     route_description: "Not too bad, but as hard start",
     route_grade: "V1",
     route_location: "Sponge Boulder",
-    route_style: "Slopers/Jugs",
+    route_style: "Jugs",
     creator: user1
 )
 seed3.route_image.attach(io: File.open('public/seed3.jpg'), filename: 'seed3.jpg', content_type: 'image/jpg')
@@ -53,7 +53,7 @@ seed4 = Photo.create!(
     route_description: "Pretty fun, but pretty hard!",
     route_grade: "V2",
     route_location: "Back Wall",
-    route_style: "Arete/Crimpy",
+    route_style: "Crimps",
     creator: user1
 )
 seed4.route_image.attach(io: File.open('public/seed4.jpg'), filename: 'seed4.jpg', content_type: 'image/jpg')
