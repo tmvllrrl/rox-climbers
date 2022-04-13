@@ -1,14 +1,17 @@
 <br>
-<h1>Rox Climber Photos</h1>
+<div class="row h-100 justify-content-center align-items-center">
+    <h1> Rox Climber Feed </h1>
+</div>
 <br>
 
 <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Sort
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <%= link_to 'Most Recent', photos_path(order: "updated_at"), class: "dropdown-item" %>
-    <%= link_to 'Route Grade', photos_path(order: "route_grade"), class: "dropdown-item" %>
+    <%= link_to 'Grade: Low to High', photos_path(order: "route_grade"), class: "dropdown-item" %>
+    <%= link_to 'Grade: High to Low', photos_path(order: "route_grade_desc"), class: "dropdown-item" %>
     <%= link_to 'Route Location', photos_path(order: "route_location"), class: "dropdown-item" %>
     <%= link_to 'Route Style', photos_path(order: "route_style"), class: "dropdown-item" %>
 
