@@ -23,8 +23,9 @@
                     <%= image_tag photo.route_image, class: "card-img-top" %>
                     <div class="card-body">
                         <h5><%= photo.route_title %></h5>
-                        <h6><%= photo.creator.email %></h6>
+                        <h6><%= link_to photo.creator.email, profile_path(email: photo.creator.email)%></h6>
                         <p><%= photo.route_grade %></p>
+                        <p><%= photo.route_style %></p>
                         <a href="#" class="btn btn-primary">Show</a>
                         <a href="#" class="btn btn-primary">Edit</a>
                         <a href="#" class="btn btn-primary">Delete</a>

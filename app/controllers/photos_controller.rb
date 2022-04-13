@@ -12,7 +12,7 @@ class PhotosController < ApplicationController
             elsif params[:order] == "route_style"
                 @photos = current_user.photos.order(:route_style)
             else # Default behavior
-                @photos = current_user.photos.order(created_at: :desc)
+                @photos = Photo.all
             end
             render :index
         else # If the user is not signed in, then display a "home page" user's photos
@@ -27,7 +27,7 @@ class PhotosController < ApplicationController
             elsif params[:order] == "route_style"
                 @photos = @user.photos.order(:route_style)
             else # Default behavior
-                @photos = @user.photos.order(created_at: :desc)
+                @photos = Photo.all
             end
             render :index
         end

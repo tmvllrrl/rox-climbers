@@ -1,0 +1,58 @@
+<br>
+<h1><%= @user.email %></h1>
+<br>
+
+<div class="btn-toolbar">
+    <% if current_user == @user %>
+        <div class="btn-group mr-2" role="group">
+            <%= link_to "Followers", follows_path(type: "followers", user_id: @user.id), class: "btn btn-secondary" %>
+        </div>
+        <div class="btn-group mr-2" role="group">
+            <%= link_to "Following", follows_path(type: "following", user_id: @user.id), class: "btn btn-secondary" %>
+        </div>
+        </div>
+    <% else %>
+        <% if Follow.where(user_id: current_user.id).where(follow_id: @user.id).take == nil %>
+            <div class="btn-group mr-2" role="group">
+                <%= bootstrap_form_with model: @follow, url: follows_path, method: :post, local: true do |f| %>
+
+                <%= f.hidden_field :user_id, value: current_user.id %>
+                <%= f.hidden_field :follow_id, value: @user.id %>
+
+                <%= f.submit "Follow", class: "btn btn-primary" %>
+                <% end %>
+            </div>
+        <% else %>
+            <div class="btn-group mr-2" role="group">
+                <%= link_to "Unfollow", follow_path(user_id: current_user.id, follow_id: @user.id), method: :delete, class: "btn btn-danger" %>
+            </div>
+        <% end %>
+        <div class="btn-group mr-2" role="group">
+            <%= link_to "Followers", follows_path(type: "followers", user_id: @user.id), class: "btn btn-secondary" %>
+        </div>
+        <div class="btn-group mr-2" role="group">
+            <%= link_to "Following", follows_path(type: "following", user_id: @user.id), class: "btn btn-secondary" %>
+        </div>
+    <% end %>
+</div>
+
+<br>
+
+<div class="container">
+    <div class="row">
+        <% @photos.each_with_index do |photo, index| %>
+            <div class="col p-3">
+                <div class="card" style="width: 18rem;">
+                    <%= image_tag photo.route_image, class: "card-img-top" %>
+                    <div class="card-body">
+                        <h5><%= photo.route_title %></h5>
+                        <p><%= photo.route_grade %></p>
+                        <a href="#" class="btn btn-primary">Show</a>
+                        <a href="#" class="btn btn-primary">Edit</a>
+                        <a href="#" class="btn btn-primary">Delete</a>
+                    </div>
+                </div>
+            </div> 
+        <% end %>
+    </div>
+</div>
