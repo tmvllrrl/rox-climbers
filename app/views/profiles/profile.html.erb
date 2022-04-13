@@ -1,5 +1,41 @@
 <br>
 <h1><%= @user.email %></h1>
+<br>
+
+<div class="btn-toolbar">
+    <% if current_user == @user %>
+        <div class="btn-group mr-2" role="group">
+            <button type="button" class="btn btn-secondary">Followers</button>
+        </div>
+        <div class="btn-group mr-2" role="group">
+            <button type="button" class="btn btn-secondary">Following</button>
+        </div>
+    <% else %>
+        <% if Follow.where(user_id: current_user.id).where(follow_id: @user.id).take == nil %>
+            <div class="btn-group mr-2" role="group">
+                <%= bootstrap_form_with model: @follow, url: follows_path, method: :post, local: true do |f| %>
+
+                <%= f.hidden_field :user_id, value: current_user.id %>
+                <%= f.hidden_field :follow_id, value: @user.id %>
+
+                <%= f.submit "Follow", class: "btn btn-primary" %>
+                <% end %>
+            </div>
+        <% else %>
+            <div class="btn-group mr-2" role="group">
+                <%= link_to "Unfollow", follow_path(user_id: current_user.id, follow_id: @user.id), method: :delete, class: "btn btn-danger" %>
+            </div>
+        <% end %>
+        <div class="btn-group mr-2" role="group">
+            <%= link_to "Followers", follows_path(type: "followers"), class: "btn btn-secondary" %>
+        </div>
+        <div class="btn-group mr-2" role="group">
+            <button type="button" class="btn btn-secondary">Following</button>
+        </div>
+    <% end %>
+</div>
+
+<br>
 
 <div class="container">
     <div class="row">

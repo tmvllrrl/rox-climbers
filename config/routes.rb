@@ -10,4 +10,8 @@ Rails.application.routes.draw do
 
   get 'profiles/', to: 'profiles#show', as: 'profile'
 
+  get 'follows', to: 'follows#index', as: 'follows'
+  post 'follows', to: 'follows#create'
+  delete 'follows', to: 'follows#destroy', as: 'follow'
+
 end
