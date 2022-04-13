@@ -27,6 +27,9 @@
             <li class="nav-item">
               <%= link_to 'Add Photo', new_photo_path, class: "nav-link" %>
             </li>
+            <li class="nav-item">
+              <%= link_to 'View Profile', profile_path(email: current_user.email), class: "nav-link" %>
+            </li>
             <li class="nav-item <%= active_class(edit_user_registration_path) %>">
               <%= link_to "Hi, #{current_user.email}", edit_user_registration_path, class: 'nav-link' %>
             </li>
@@ -56,7 +59,6 @@
       <% end %>
 
       <%= yield %>
-
     </main>
   </body>
 </html>

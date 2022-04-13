@@ -1,0 +1,21 @@
+<br>
+<h1><%= @user.email %></h1>
+
+<div class="container">
+    <div class="row">
+        <% @photos.each_with_index do |photo, index| %>
+            <div class="col p-3">
+                <div class="card" style="width: 18rem;">
+                    <%= image_tag photo.route_image, class: "card-img-top" %>
+                    <div class="card-body">
+                        <h5><%= photo.route_title %></h5>
+                        <p><%= photo.route_grade %></p>
+                        <a href="#" class="btn btn-primary">Show</a>
+                        <a href="#" class="btn btn-primary">Edit</a>
+                        <a href="#" class="btn btn-primary">Delete</a>
+                    </div>
+                </div>
+            </div> 
+        <% end %>
+    </div>
+</div>

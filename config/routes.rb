@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   post 'photos', to: 'photos#create'
   get 'photos/new', to: 'photos#new', as: 'new_photo'
 
+  get 'profiles/', to: 'profiles#show', as: 'profile'
+
 end
