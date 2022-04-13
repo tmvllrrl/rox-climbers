@@ -1,14 +1,16 @@
 <br>
-<h1><%= @user.email %></h1>
+<div class="row h-100 justify-content-center align-items-center">
+    <h1><%= @user.email %></h1>
+</div>
 <br>
 
-<div class="btn-toolbar">
+<div class="btn-toolbar justify-content-center">
     <% if current_user == @user %>
         <div class="btn-group mr-2" role="group">
-            <%= link_to "Followers", follows_path(type: "followers", user_id: @user.id), class: "btn btn-secondary" %>
+            <%= link_to "Followers", follows_path(type: "followers", user_id: @user.id), class: "btn btn-dark" %>
         </div>
         <div class="btn-group mr-2" role="group">
-            <%= link_to "Following", follows_path(type: "following", user_id: @user.id), class: "btn btn-secondary" %>
+            <%= link_to "Following", follows_path(type: "following", user_id: @user.id), class: "btn btn-dark" %>
         </div>
         </div>
     <% else %>
@@ -28,10 +30,10 @@
             </div>
         <% end %>
         <div class="btn-group mr-2" role="group">
-            <%= link_to "Followers", follows_path(type: "followers", user_id: @user.id), class: "btn btn-secondary" %>
+            <%= link_to "Followers", follows_path(type: "followers", user_id: @user.id), class: "btn btn-dark" %>
         </div>
         <div class="btn-group mr-2" role="group">
-            <%= link_to "Following", follows_path(type: "following", user_id: @user.id), class: "btn btn-secondary" %>
+            <%= link_to "Following", follows_path(type: "following", user_id: @user.id), class: "btn btn-dark" %>
         </div>
     <% end %>
 </div>

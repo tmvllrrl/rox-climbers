@@ -11,36 +11,36 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Memphis Rox</a>
+    <nav class="navbar navbar-expand-lg navbar-dark", style="background-color: #1b365d">
+      <a class="navbar-brand" href="#">Rox Climbers</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item <%= active_class(photos_path) %>">
+          <li class="nav-item <%= active_class(photos_path) %>", style="font-size: 16px; font-weight: bold;">
             <%= link_to 'Home', photos_path, class: 'nav-link' %>
           </li>
         </ul>
         <ul class="navbar-nav">
           <% if user_signed_in? %>
-            <li class="nav-item">
+            <li class="nav-item <%= active_class(new_photo_path) %>", style="font-size: 16px; font-weight: bold; font-color: white;">
               <%= link_to 'Add Photo', new_photo_path, class: "nav-link" %>
             </li>
-            <li class="nav-item">
+            <li class="nav-item <%= active_class(profile_path) %>", style="font-size: 16px; font-weight: bold;">
               <%= link_to 'View Profile', profile_path(email: current_user.email), class: "nav-link" %>
             </li>
-            <li class="nav-item <%= active_class(edit_user_registration_path) %>">
+            <li class="nav-item <%= active_class(edit_user_registration_path) %>", style="font-size: 16px; font-weight: bold;">
               <%= link_to "Hi, #{current_user.email}", edit_user_registration_path, class: 'nav-link' %>
             </li>
-            <li class="nav-item">
+            <li class="nav-item", style="font-size: 16px; font-weight: bold;">
               <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
             </li>
           <% else %>
-            <li class="nav-item <%= active_class(new_user_session_path) %>">
+            <li class="nav-item <%= active_class(new_user_session_path) %>", style="font-size: 16px; font-weight: bold;">
               <%= link_to 'Sign In', new_user_session_path, class: 'nav-link' %>
             </li>
-            <li class="nav-item <%= active_class(new_user_registration_path) %>">
+            <li class="nav-item <%= active_class(new_user_registration_path) %>", style="font-size: 16px; font-weight: bold;">
               <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %>
             </li>
           <% end %>

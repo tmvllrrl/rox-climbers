@@ -9,7 +9,7 @@
 # Seeds for Home Page User and Photos
 
 user1 = User.create!(
-    email: "homeuser@gmail.com",
+    email: "rox_climbers@gmail.com",
     password: "password",
     username: "home_page"
 )
@@ -65,7 +65,7 @@ user2 = User.create!(
 seed5 = Photo.create!(
     route_title: "Hanging",
     route_description: "Pretty fun, but pretty hard!",
-    route_grade: "V3",
+    route_grade: "V2",
     route_location: "Middle Front",
     route_style: "Slopers",
     creator: user2
