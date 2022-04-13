@@ -1,0 +1,50 @@
+<% if @type == "followers" %>
+    <br>
+    <h1> <%= @user.email %>'s Followers </h1>
+    <br>
+
+    <p> 
+        <%= link_to "Back", profile_path(email: @user.email), class: "btn btn-primary" %>
+    </p>
+
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Users</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @follows.each do |follow| %>
+                <tr>
+                    <td><%= User.find(follow.user_id).email %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+<% else %>
+    <br>
+    <h1> <%= @user.email %>'s Following </h1>
+    <br>
+
+    <p> 
+        <%= link_to "Back", profile_path(email: @user.email), class: "btn btn-primary" %>
+    </p>
+
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Users</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @follows.each do |follow| %>
+                <tr>
+                    <td><%= User.find(follow.follow_id).email %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+<% end %>
+

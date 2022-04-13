@@ -1,7 +1,16 @@
 class FollowsController < ApplicationController
 
     def index
-        
+        @user = User.find(params[:user_id])
+        @type = params[:type]
+
+        if @type == "followers" # Want to view the users' followers
+            @follows = Follow.where(follow_id: @user.id)
+        else # Want to view who the user is following
+            @follows = Follow.where(user_id: @user.id)
+        end
+
+        render :index
     end
 
 
