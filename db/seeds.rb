@@ -17,7 +17,7 @@ user1 = User.create!(
 seed1 = Photo.create!(
     route_title: "Hanging",
     route_description: "Pretty fun, but pretty hard!",
-    route_grade: "V3",
+    route_grade: "V4",
     route_location: "Middle Front",
     route_style: "Slopers",
     creator: user1

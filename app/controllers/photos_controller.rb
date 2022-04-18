@@ -6,7 +6,7 @@ class PhotosController < ApplicationController
         if Photo.find(params[:id]).creator != current_user
           redirect_to photos_path, flash: { error: "You do not have permission to do that." }
         end
-      end
+    end
 
     def index
         if user_signed_in? # If the user is signed in, then display the photos of who they follow
@@ -38,6 +38,8 @@ class PhotosController < ApplicationController
                 @photos = @user.photos.order(created_at: :desc)
             elsif params[:order] == "route_grade"
                 @photos = @user.photos.order(:route_grade)
+            elsif params[:order] == "route_grade_desc"
+                @photos = @user.photos.order(route_grade: :desc)
             elsif params[:order] == "route_location"
                 @photos = @user.photos.order(:route_location)
             elsif params[:order] == "route_style"
