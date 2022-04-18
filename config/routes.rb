@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   post 'follows', to: 'follows#create'
   delete 'follows', to: 'follows#destroy', as: 'follow'
 
+  get 'explores/', to: 'explores#index', as: 'explores'
+
 end
