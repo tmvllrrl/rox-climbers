@@ -3,14 +3,13 @@ class ExploresController < ApplicationController
 
     def index
 
-        @user = User.select(:id).order(Arel.sql('RANDOM()')).first(2)
+        @user = User.select(:id).order(Arel.sql('RANDOM()')).first(3)
 
-        
         if params[:order] == "updated_at"
             @photos = Photo.where(user_id: @user).order(created_at: :desc)
         elsif params[:order] == "route_grade"
             @photos = Photo.where(user_id: @user).order(:route_grade)
-        elsif params[:order] == "route_grade-desc"
+        elsif params[:order] == "route_grade_desc"
             @photos = Photo.where(user_id: @user).order(route_grade: :desc)
         elsif params[:order] == "route_location"
             @photos = Photo.where(user_id: @user).order(:route_location)
@@ -21,7 +20,6 @@ class ExploresController < ApplicationController
         end
             
         render :index
-    #end
         
     end
 
