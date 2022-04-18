@@ -116,7 +116,7 @@ seed9 = Photo.create!(
     route_grade: "V2",
     route_location: "Middle Front",
     route_style: "Slopers",
-    creator: user2
+    creator: user3
 )
 seed9.route_image.attach(io: File.open('public/seed1.jpg'), filename: 'seed1.jpg', content_type: 'image/jpg')
 
