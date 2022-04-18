@@ -1,5 +1,12 @@
 class PhotosController < ApplicationController
     before_action :authenticate_user!, except: [:index]
+    before_action :require_permission, except: [:index, :new, :create]
+
+    def require_permission
+        if Photo.find(params[:id]).creator != current_user
+          redirect_to photos_path, flash: { error: "You do not have permission to do that." }
+        end
+      end
 
     def index
         if user_signed_in? # If the user is signed in, then display the photos of who they follow

@@ -50,8 +50,10 @@
                         <h5><%= photo.route_title %></h5>
                         <p><%= photo.route_grade %></p>
                         <a href="#" class="btn btn-primary">Show</a>
-                        <a href="#" class="btn btn-primary">Edit</a>
-                        <a href="#" class="btn btn-primary">Delete</a>
+                        <% if current_user = @user %>
+                            <a href="#" class="btn btn-primary">Edit</a>
+                            <a href="#" class="btn btn-primary">Delete</a>
+                        <% end %>
                     </div>
                 </div>
             </div> 
