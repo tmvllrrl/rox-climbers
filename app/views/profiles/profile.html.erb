@@ -48,7 +48,8 @@
                     <%= image_tag photo.route_image, class: "card-img-top" %>
                     <div class="card-body">
                         <h5><%= photo.route_title %></h5>
-                        <p><%= photo.route_grade %></p>
+                        <h6><%= photo.route_grade %></h6>
+                        <h6><%= link_to photo.route_location, location_path(where: photo.route_location, route_title: photo.route_title) %></h6>
                         <a href="#" class="btn btn-primary">Show</a>
                         <% if current_user == @user %>
                             <a href="#" class="btn btn-primary">Edit</a>
