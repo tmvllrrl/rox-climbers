@@ -16,4 +16,6 @@ Rails.application.routes.draw do
 
   get 'explores/', to: 'explores#index', as: 'explores'
 
+  get 'location', to: 'maps#location', as: 'location'
+
 end

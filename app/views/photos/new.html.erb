@@ -29,7 +29,17 @@
 
             <%= f.text_field :route_title %>
             <%= f.text_field :route_grade %>
-            <%= f.text_field :route_location %>
+
+            <%= f.label :age_label, "Route location"%>
+            <%= f.radio_button :route_location, "Middle Front" %>
+            <%= f.radio_button :route_location, "Middle Back" %>
+            <%= f.radio_button :route_location, "Middle Left" %>
+            <%= f.radio_button :route_location, "Middle Right" %>
+            <%= f.radio_button :route_location, "Back Wall" %>
+            <%= f.radio_button :route_location, "The Cave" %>
+            <%= f.radio_button :route_location, "Back Right" %>
+            <%= f.radio_button :route_location, "Comp Wall" %>
+            <br>
 
             <%= f.label :age_label, "Route style"%>
             <%= f.radio_button :route_style, "Jugs" %>
