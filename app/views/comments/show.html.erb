@@ -1,0 +1,9 @@
+<h1><%= @comment.comment %></h1>
+<ul>
+  <li class="text-success">
+    <%= @comment.text %>
+  </li>
+</ul>
+<p>
+  <%= link_to 'Back to Comments', photo_comments_path(@photo), class: 'btn btn-outline-secondary' %>
+</p>

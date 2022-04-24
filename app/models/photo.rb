@@ -31,4 +31,35 @@ class Photo < ApplicationRecord
         foreign_key: 'user_id',
         inverse_of: :photos
     )
+
+    has_many(
+        :comments,
+        class_name: 'Comment',
+        foreign_key: 'photo_id',
+        inverse_of: :photo,
+        dependent: :destroy
+      )
+
+    has_many(
+        :likes,
+        class_name: 'Like',
+        foreign_key: 'photo_id',
+        inverse_of: :photo,
+        dependent: :destroy
+    )
+    
+    def get_likes
+        num = Like.where(photo_id:self.id,is_like:true).count
+    end
+      
+    def get_like_info()
+        like = Like.find_by(photo_id:self.id)
+        boolean = false
+        if like && like.is_like
+          boolean = true
+        end
+    end
+      
+
+
 end

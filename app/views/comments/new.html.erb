@@ -1,0 +1,8 @@
+<h1>Add New Comment</h1>
+<%= bootstrap_form_with model: @comment, method: :post, url: photo_comments_path(@photo), local: true do |f| %>
+  <%= f.text_field :text %>
+  <%= f.submit %>
+<% end %>
+<p class="mt-3">
+  <%= link_to 'Cancel', photo_comments_path(@photo), class: 'btn btn-outline-secondary' %>
+</p>
