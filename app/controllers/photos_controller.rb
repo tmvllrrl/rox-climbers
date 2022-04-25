@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
-    before_action :authenticate_user!, except: [:index]
-    before_action :require_permission, except: [:index, :new, :create]
+    before_action :authenticate_user!, except: [:index, :show]
+    before_action :require_permission, except: [:index, :new, :create, :show, :create_like]
 
     def require_permission
         if Photo.find(params[:id]).creator != current_user
@@ -10,6 +10,8 @@ class PhotosController < ApplicationController
 
     def show
         @photo = Photo.find(params[:id])
+        @comments = @photo.comments.order(created_at: :desc)
+        @comment = Comment.new
         render :show
     end
 

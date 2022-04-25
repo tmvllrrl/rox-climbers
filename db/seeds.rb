@@ -185,13 +185,3 @@ seed14 = Photo.create!(
     creator: user4
 )
 seed14.route_image.attach(io: File.open('public/test8.jpg'), filename: 'test8.jpg', content_type: 'image/jpg')
-
-seed15 = Photo.create!(
-    route_title: "Arete the Way",
-    route_description: "Pretty fun, but pretty hard!",
-    route_grade: "V2",
-    route_location: "Back Right",
-    route_style: "Crimps",
-    creator: user4
-)
-seed15.route_image.attach(io: File.open('public/test4.jpg'), filename: 'test4.jpg', content_type: 'image/jpg')
