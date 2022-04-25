@@ -1,0 +1,10 @@
+<br>
+<h1><%= @route_title%>'s Location: <%= @location_string%></h1>
+
+<div class="row h-100 justify-content-center align-items-center">
+    <%= image_tag @location %>
+</div>
+
+<p>
+    <%= link_to "To Home Feed", photos_path, class: "btn btn-primary" %>
+<p>

@@ -21,6 +21,9 @@
           <li class="nav-item <%= active_class(photos_path) %>", style="font-size: 16px; font-weight: bold;">
             <%= link_to 'Home', photos_path, class: 'nav-link' %>
           </li>
+          <li class="nav-item <%= active_class(explores_path) %>", style="font-size: 16px; font-weight: bold;">
+            <%= link_to 'Explore', explores_path, class: 'nav-link' %>
+          </li>
         </ul>
         <ul class="navbar-nav">
           <% if user_signed_in? %>

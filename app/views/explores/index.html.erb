@@ -1,0 +1,39 @@
+<br>
+<div class="row h-100 justify-content-center align-items-center">
+    <h1> Rox Climber Feed </h1>
+</div>
+<br>
+
+<div class="dropdown">
+  <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Sort
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <%= link_to 'Most Recent', explores_path(order: "updated_at"), class: "dropdown-item" %>
+    <%= link_to 'Grade: Low to High', explores_path(order: "route_grade"), class: "dropdown-item" %>
+    <%= link_to 'Grade: High to Low', explores_path(order: "route_grade_desc"), class: "dropdown-item" %>
+    <%= link_to 'Route Location', explores_path(order: "route_location"), class: "dropdown-item" %>
+    <%= link_to 'Route Style', explores_path(order: "route_style"), class: "dropdown-item" %>
+
+  </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <% @photos.each_with_index do |photo, index| %>
+            <div class="col p-3">
+                <div class="card" style="width: 18rem;">
+                    <%= image_tag photo.route_image, class: "card-img-top" %>
+                    <div class="card-body">
+                        <h5><%= photo.route_title %></h5>
+                        <h6><%= link_to photo.creator.email, profile_path(email: photo.creator.email)%></h6>
+                        <h6><%= link_to photo.route_location, location_path(where: photo.route_location, route_title: photo.route_title) %></h6>
+                        <h6><%= photo.route_grade %></h6>
+                        <h6><%= photo.route_style %></h6>
+                        <a href="#" class="btn btn-primary">Show</a>
+                    </div>
+                </div>
+            </div> 
+        <% end %>
+    </div>
+</div>

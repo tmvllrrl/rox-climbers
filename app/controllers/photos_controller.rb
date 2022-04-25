@@ -1,5 +1,12 @@
 class PhotosController < ApplicationController
     before_action :authenticate_user!, except: [:index]
+    before_action :require_permission, except: [:index, :new, :create]
+
+    def require_permission
+        if Photo.find(params[:id]).creator != current_user
+          redirect_to photos_path, flash: { error: "You do not have permission to do that." }
+        end
+    end
 
     def show
         @photo = Photo.find(params[:id])
@@ -36,6 +43,8 @@ class PhotosController < ApplicationController
                 @photos = @user.photos.order(created_at: :desc)
             elsif params[:order] == "route_grade"
                 @photos = @user.photos.order(:route_grade)
+            elsif params[:order] == "route_grade_desc"
+                @photos = @user.photos.order(route_grade: :desc)
             elsif params[:order] == "route_location"
                 @photos = @user.photos.order(:route_location)
             elsif params[:order] == "route_style"

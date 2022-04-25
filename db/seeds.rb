@@ -17,7 +17,7 @@ user1 = User.create!(
 seed1 = Photo.create!(
     route_title: "Hanging",
     route_description: "Pretty fun, but pretty hard!",
-    route_grade: "V3",
+    route_grade: "V4",
     route_location: "Middle Front",
     route_style: "Slopers",
     creator: user1
@@ -38,11 +38,11 @@ seed3 = Photo.create!(
     route_title: "Slap that Rock",
     route_description: "Not too bad, but as hard start",
     route_grade: "V1",
-    route_location: "Sponge Boulder",
+    route_location: "Comp Wall",
     route_style: "Jugs",
     creator: user1
 )
-seed3.route_image.attach(io: File.open('public/seed3.jpg'), filename: 'seed3.jpg', content_type: 'image/jpg')
+seed3.route_image.attach(io: File.open('public/test3.jpg'), filename: 'test3.jpg', content_type: 'image/jpg')
 
 seed4 = Photo.create!(
     route_title: "Arete the Way",
@@ -52,7 +52,7 @@ seed4 = Photo.create!(
     route_style: "Crimps",
     creator: user1
 )
-seed4.route_image.attach(io: File.open('public/seed4.jpg'), filename: 'seed4.jpg', content_type: 'image/jpg')
+seed4.route_image.attach(io: File.open('public/test4.jpg'), filename: 'test4.jpg', content_type: 'image/jpg')
 
 # Seeds for Muminul User and Photos
 
@@ -94,11 +94,11 @@ seed7 = Photo.create!(
     route_title: "Slap that Rock",
     route_description: "Not too bad, but as hard start",
     route_grade: "V1",
-    route_location: "Sponge Boulder",
+    route_location: "The Cave",
     route_style: "Jugs",
     creator: user3
 )
-seed7.route_image.attach(io: File.open('public/seed3.jpg'), filename: 'seed3.jpg', content_type: 'image/jpg')
+seed7.route_image.attach(io: File.open('public/test5.jpg'), filename: 'test5.jpg', content_type: 'image/jpg')
 
 seed8 = Photo.create!(
     route_title: "Arete the Way",
@@ -108,4 +108,90 @@ seed8 = Photo.create!(
     route_style: "Crimps",
     creator: user3
 )
-seed8.route_image.attach(io: File.open('public/seed4.jpg'), filename: 'seed4.jpg', content_type: 'image/jpg')
+seed8.route_image.attach(io: File.open('public/test7.jpg'), filename: 'test7.jpg', content_type: 'image/jpg')
+
+seed9 = Photo.create!(
+    route_title: "Hanging",
+    route_description: "Pretty fun, but pretty hard!",
+    route_grade: "V2",
+    route_location: "Middle Front",
+    route_style: "Slopers",
+    creator: user3
+)
+seed9.route_image.attach(io: File.open('public/seed1.jpg'), filename: 'seed1.jpg', content_type: 'image/jpg')
+
+# Seeds for Yuexin User and Photos
+
+user4 = User.create!(
+    email: "yuexin@gmail.com",
+    password: "password",
+    username: "yuexin"
+)
+
+seed10 = Photo.create!(
+    route_title: "Hanging",
+    route_description: "Pretty fun, but pretty hard!",
+    route_grade: "V3",
+    route_location: "Middle Left",
+    route_style: "Slopers",
+    creator: user4
+)
+seed10.route_image.attach(io: File.open('public/seed1.jpg'), filename: 'seed1.jpg', content_type: 'image/jpg')
+
+seed11 = Photo.create!(
+    route_title: "Slap that Rock",
+    route_description: "Not too bad, but as hard start",
+    route_grade: "V1",
+    route_location: "Back Wall",
+    route_style: "Jugs",
+    creator: user4
+)
+seed11.route_image.attach(io: File.open('public/test8.jpg'), filename: 'test8.jpg', content_type: 'image/jpg')
+
+seed12 = Photo.create!(
+    route_title: "Arete the Way",
+    route_description: "Pretty fun, but pretty hard!",
+    route_grade: "V2",
+    route_location: "Back Wall",
+    route_style: "Crimps",
+    creator: user4
+)
+seed12.route_image.attach(io: File.open('public/test5.jpg'), filename: 'test5.jpg', content_type: 'image/jpg')
+
+# Seeds for Mahitha User and Photos
+
+user4 = User.create!(
+    email: "mahitha@gmail.com",
+    password: "password",
+    username: "mathitha"
+)
+
+seed13 = Photo.create!(
+    route_title: "Hanging 2: Electric Boogaloo",
+    route_description: "Pretty fun, but pretty hard!",
+    route_grade: "V3",
+    route_location: "Middle Front",
+    route_style: "Slopers",
+    creator: user4
+)
+seed13.route_image.attach(io: File.open('public/seed2.jpg'), filename: 'seed2.jpg', content_type: 'image/jpg')
+
+seed14 = Photo.create!(
+    route_title: "Slap that Rock",
+    route_description: "Not too bad, but as hard start",
+    route_grade: "V1",
+    route_location: "Middle Right",
+    route_style: "Jugs",
+    creator: user4
+)
+seed14.route_image.attach(io: File.open('public/test8.jpg'), filename: 'test8.jpg', content_type: 'image/jpg')
+
+seed15 = Photo.create!(
+    route_title: "Arete the Way",
+    route_description: "Pretty fun, but pretty hard!",
+    route_grade: "V2",
+    route_location: "Back Right",
+    route_style: "Crimps",
+    creator: user4
+)
+seed15.route_image.attach(io: File.open('public/test4.jpg'), filename: 'test4.jpg', content_type: 'image/jpg')

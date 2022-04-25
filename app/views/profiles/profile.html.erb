@@ -5,7 +5,7 @@
 <br>
 
 <div class="btn-toolbar justify-content-center">
-    <% if current_user == @user %>
+    <% if current_user == @user or current_user == nil %>
         <div class="btn-group mr-2" role="group">
             <%= link_to "Followers", follows_path(type: "followers", user_id: @user.id), class: "btn btn-dark" %>
         </div>
@@ -48,10 +48,13 @@
                     <%= image_tag photo.route_image, class: "card-img-top" %>
                     <div class="card-body">
                         <h5><%= photo.route_title %></h5>
-                        <p><%= photo.route_grade %></p>
+                        <h6><%= photo.route_grade %></h6>
+                        <h6><%= link_to photo.route_location, location_path(where: photo.route_location, route_title: photo.route_title) %></h6>
                         <a href="#" class="btn btn-primary">Show</a>
-                        <a href="#" class="btn btn-primary">Edit</a>
-                        <a href="#" class="btn btn-primary">Delete</a>
+                        <% if current_user == @user %>
+                            <a href="#" class="btn btn-primary">Edit</a>
+                            <a href="#" class="btn btn-primary">Delete</a>
+                        <% end %>
                     </div>
                 </div>
             </div> 
