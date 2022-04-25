@@ -14,10 +14,10 @@ class CommentsController < ApplicationController
 
     def create
         @photo = Photo.find(params[:photo_id])
-        @comment = @photo.comments.build(params.require(:comment).permit(:comment, :text))
+        @comment = @photo.comments.build(params.require(:comment).permit(:comment, :text, :user_id))
         if @comment.save
-          flash[:success] = "Comment saved successfully"
-          redirect_to photo_comments_url(@photo)
+          # flash[:success] = "Comment saved successfully"
+          redirect_to photo_url(@photo)
         else
           flash.now[:error] = "Comment could not be saved"
           render :new

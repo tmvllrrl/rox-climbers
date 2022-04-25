@@ -8,7 +8,7 @@
   <tbody>
     <% @comments.each do |comment| %>
       <tr>
-        <td><%= comment.text %></td>
+        <td><%= User.find(comment.user_id).email %>: <%= comment.text %></td>
       </tr>
     <% end %>
   </tbody>

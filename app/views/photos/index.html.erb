@@ -31,9 +31,11 @@
                         <h6><%= link_to photo.route_location, location_path(where: photo.route_location, route_title: photo.route_title) %></h6>
                         <h6><%= photo.route_grade %></h6>
                         <h6><%= photo.route_style %></h6>
-                        <td><%=  link_to "Show", photo_path(photo),class: 'btn btn-primary' %></td>
-                        <a href="#" class="btn btn-primary">Edit</a>
-                        <a href="#" class="btn btn-primary">Delete</a>
+                        <h6><%=  link_to "Show", photo_path(photo),class: 'btn btn-primary' %></h6>
+                        <% if current_user == photo.creator %>
+                          <a href="#" class="btn btn-primary">Edit</a>
+                          <a href="#" class="btn btn-primary">Delete</a>
+                        <% end %>
                         <a href="/photos/<%= photo.id %>/likes" class="fa fa-thumbs-up" onclick="praiseReplay(this)">Like</a>                
 
                     </div>

@@ -30,7 +30,7 @@
                         <h6><%= link_to photo.route_location, location_path(where: photo.route_location, route_title: photo.route_title) %></h6>
                         <h6><%= photo.route_grade %></h6>
                         <h6><%= photo.route_style %></h6>
-                        <a href="#" class="btn btn-primary">Show</a>
+                        <h6><%=  link_to "Show", photo_path(photo),class: 'btn btn-primary' %></h6>
                     </div>
                 </div>
             </div> 
