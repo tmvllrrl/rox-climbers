@@ -8,6 +8,11 @@ class PhotosController < ApplicationController
         end
     end
 
+    def show
+        @photo = Photo.find(params[:id])
+        render :show
+    end
+
     def index
         if user_signed_in? # If the user is signed in, then display the photos of who they follow
             if params[:order] == "updated_at"
@@ -67,4 +72,17 @@ class PhotosController < ApplicationController
             render :new
         end
     end
+    
+    
+    def create_like
+        is_like = params[:is_like]
+        if is_like == "0"
+          is_like = false
+        elsif is_like == "1"
+          is_like = true
+        end
+        like = Like.find_or_create_by(is_like:is_like)
+        like.save
+    end
+   
 end

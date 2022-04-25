@@ -1,0 +1,11 @@
+<h1><%= @photo.route_title %></h1>
+<p>
+  Route Image: <%= image_tag @photo.route_image %>
+</p>
+<p>
+  Route Grade <%= @photo.route_grade %>
+</p>
+
+<p>
+  <%= link_to 'Comments', photo_comments_path(@photo), class: 'btn btn-secondary' %>
+</p>

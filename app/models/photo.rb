@@ -31,4 +31,21 @@ class Photo < ApplicationRecord
         foreign_key: 'user_id',
         inverse_of: :photos
     )
+
+    has_many(
+        :comments,
+        class_name: 'Comment',
+        foreign_key: 'photo_id',
+        inverse_of: :photo,
+        dependent: :destroy
+      )
+
+    has_many(
+        :likes,
+        class_name: 'Like',
+        foreign_key: 'photo_id',
+        inverse_of: :photo,
+        dependent: :destroy
+    ) 
+
 end

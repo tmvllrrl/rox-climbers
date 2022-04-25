@@ -1,0 +1,23 @@
+<h1>Comments</h1>
+<table class="table table-striped table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th>Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.text %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+  <%= link_to "New Comment", new_photo_comment_path(@photo), class: "btn btn-secondary"%>
+</p>
+
+<p>
+  <%= link_to 'Photo', photo_path(@photo), class: 'btn btn-outline-secondary' %>
+</p>
