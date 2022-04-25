@@ -21,6 +21,9 @@ Rails.application.routes.draw do
 
   get 'photos/:photo_id/likes' , to: 'likes#create'
 
+  
+  
+  
   get 'explores/', to: 'explores#index', as: 'explores'
 
   get 'location', to: 'maps#location', as: 'location'
