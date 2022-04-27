@@ -20,7 +20,13 @@
 #
 #  fk_rails_...  (user_id => users.id)
 #
+
+require 'elasticsearch/model'
+
 class Photo < ApplicationRecord
+    include Elasticsearch::Model
+    include Elasticsearch::Model::Callbacks
+    
     has_one_attached :route_image
 
     validates :route_grade, inclusion: { in: ["V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10", "5.6", "5.7", "5.8", "5.9", "5.10", "5.11", "5.12", "5.13"]}

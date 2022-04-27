@@ -67,3 +67,7 @@ gem "bootstrap_form", "~> 4.0"
 
 # Authentication
 gem 'devise'
+
+# Elastic Search
+gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: 'main'
+gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: 'main'
