@@ -19,6 +19,8 @@
       <br>
       <h4 style="font-weight: bold">Route Description:</h4>
       <h5><%= @photo.route_description %></h5>
+      
+      <h6><%=  link_to "Inactive Favourite", photo_path,class: 'btn btn-primary' %></h6>
     </div>
 
     <div class="col">
@@ -48,4 +50,8 @@
       <% end %>
     </div>
   </div>
+  
 </div>
+
+
+
