@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   post 'likes', to: 'likes#create'
   delete 'likes', to: 'likes#destroy', as: 'like'
 
+  get 'favorites/', to: 'favorites#index', as: 'favorites'
   post 'favorites', to: 'favorites#create'
   delete 'favorites', to: 'favorites#destroy', as: 'favorite'
 

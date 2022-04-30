@@ -7,7 +7,7 @@
 <div class="btn-toolbar justify-content-center">
     <% if current_user == @user or current_user == nil %>
         <div class="btn-group mr-2" role="group">
-            <%= link_to "Dummy Favorite", follows_path(type: "followers", user_id: @user.id), class: "btn btn-dark" %>
+            <%= link_to "Dummy Favorite", favorites_path(user_id: @user.id), class: "btn btn-dark" %>
         </div>
         <div class="btn-group mr-2" role="group">
             <%= link_to "Followers", follows_path(type: "followers", user_id: @user.id), class: "btn btn-dark" %>
