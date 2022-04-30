@@ -30,6 +30,24 @@
             <% end %>
           <% end %>
         </div>
+        <div class="col" style="margin-left: 125px;">
+          <% if  current_user != nil %>
+            <% if Favorite.where(user_id: current_user.id).where(photo_id: @photo.id).take == nil %>
+                <div class="btn-group mr-2" role="group">
+                  <%= bootstrap_form_with model: @favorite, url: favorites_path(photo_id: @photo.id), method: :post, local: true do |f| %>
+                  <%= f.hidden_field :user_id, value: current_user.id %>
+                  <%= f.hidden_field :photo_id, value: @photo.id %>                    
+                  <%= f.submit "favorite", class: "btn btn-primary" %>
+                  <% end %>
+              </div>
+            <% else %>
+              <div class="btn-group mr-2" role="group">
+                  <%= link_to "Unfavorite", favorite_path(user_id: current_user.id, photo_id: @photo.id), method: :delete, class: "btn btn-danger" %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+
       </div>
       
       <br>
