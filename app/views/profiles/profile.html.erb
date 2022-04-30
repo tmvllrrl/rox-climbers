@@ -17,10 +17,8 @@
         <% if Follow.where(user_id: current_user.id).where(follow_id: @user.id).take == nil %>
             <div class="btn-group mr-2" role="group">
                 <%= bootstrap_form_with model: @follow, url: follows_path, method: :post, local: true do |f| %>
-
                 <%= f.hidden_field :user_id, value: current_user.id %>
                 <%= f.hidden_field :follow_id, value: @user.id %>
-
                 <%= f.submit "Follow", class: "btn btn-primary" %>
                 <% end %>
             </div>
@@ -51,9 +49,26 @@
                         <h6><%= photo.route_grade %></h6>
                         <h6><%= link_to photo.route_location, location_path(where: photo.route_location, route_title: photo.route_title) %></h6>
                         <h6><%=  link_to "Show", photo_path(photo),class: 'btn btn-primary' %></h6>
+
                         <% if current_user == @user %>
                             <a href="#" class="btn btn-primary">Edit</a>
                             <a href="#" class="btn btn-primary">Delete</a>
+                        <% end %>
+
+                        <% if  current_user != nil %>
+                            <% if Like.where(user_id: current_user.id).where(photo_id: photo.id).take == nil %>
+                                 <div class="btn-group mr-2" role="group">
+                                    <%= bootstrap_form_with model: @like, url: likes_path, method: :post, local: true do |f| %>
+                                    <%= f.hidden_field :user_id, value: current_user.id %>
+                                    <%= f.hidden_field :photo_id, value: photo.id %>                    
+                                    <%= f.submit "Like", class: "btn btn-primary" %>
+                                    <% end %>
+                                </div>
+                            <% else %>
+                                <div class="btn-group mr-2" role="group">
+                                    <%= link_to "Unlike", like_path(user_id: current_user.id,photo_id:photo.id), method: :delete, class: "btn btn-danger" %>
+                                </div>
+                            <% end %>
                         <% end %>
                     </div>
                 </div>

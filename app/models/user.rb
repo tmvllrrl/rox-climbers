@@ -29,5 +29,14 @@ class User < ApplicationRecord
     foreign_key: 'user_id',
     inverse_of: :creator
   )
+
+  has_many(
+    :likes,
+    class_name: 'Like',
+    foreign_key: 'user_id',
+    inverse_of: :creator,
+    dependent: :destroy
+  ) 
+
   
 end
