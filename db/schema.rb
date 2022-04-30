@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_30_202059) do
+ActiveRecord::Schema.define(version: 2022_04_30_204648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,11 +54,14 @@ ActiveRecord::Schema.define(version: 2022_04_30_202059) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "photo_id"
+    t.bigint "favorite_id"
     t.boolean "is_favorite"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.bigint "photo_id"
+    t.index ["photo_id"], name: "index_favorites_on_photo_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "follows", force: :cascade do |t|
@@ -107,6 +110,8 @@ ActiveRecord::Schema.define(version: 2022_04_30_202059) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "photos"
   add_foreign_key "comments", "users"
+  add_foreign_key "favorites", "photos"
+  add_foreign_key "favorites", "users"
   add_foreign_key "likes", "photos"
   add_foreign_key "likes", "users"
   add_foreign_key "photos", "users"

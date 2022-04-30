@@ -88,5 +88,16 @@ class PhotosController < ApplicationController
         like = Like.find_or_create_by(is_like:is_like)
         like.save
     end
+
+    def create_favorite
+        is_favorite = params[:is_favorite]
+        if is_favorite == "0"
+          is_favorite = false
+        elsif is_favorite == "1"
+          is_favorite = true
+        end
+        favorite = Favorite.find_or_create_by(is_favorite:is_favorite)
+        favorite.save
+    end
    
 end
