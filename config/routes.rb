@@ -28,4 +28,7 @@ Rails.application.routes.draw do
 
   get 'location', to: 'maps#location', as: 'location'
 
+  post 'likes', to: 'likes#create'
+  delete 'likes', to: 'likes#destroy', as: 'like'
+
 end

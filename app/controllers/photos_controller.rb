@@ -13,6 +13,7 @@ class PhotosController < ApplicationController
         @comments = @photo.comments.order(created_at: :desc)
         @comment = Comment.new
         @favorite = Favorite.new
+        @like = Like.new
         render :show
     end
 
