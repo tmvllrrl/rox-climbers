@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   post 'photos/:photo_id/comments', to: 'comments#create'
   get 'photos/:photo_id/comments/new', to: 'comments#new', as: 'new_photo_comment'
   get 'photos/:photo_id/likes' , to: 'likes#create'
+
+  get 'favorites', to: 'favorites#index', as: 'favorites'
+  post 'favorites', to: 'favorites#create'
+
   
   get 'explores/', to: 'explores#index', as: 'explores'
 
