@@ -12,6 +12,7 @@ class PhotosController < ApplicationController
         @photo = Photo.find(params[:id])
         @comments = @photo.comments.order(created_at: :desc)
         @comment = Comment.new
+        @like = Like.new
         render :show
     end
 
