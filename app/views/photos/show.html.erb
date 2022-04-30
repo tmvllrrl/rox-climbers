@@ -8,8 +8,30 @@
     <div class="col">
       <h4 style="font-weight: bold">Route Image: </h4>
       <%= image_tag @photo.route_image, style: "width: 60vh; margin-bottom: 20px"  %>
-      <h4 style="font-weight: bold">Route Grade:</h4>
-      <h5><%= @photo.route_grade %></h5>
+      <div class="row">
+        <div class="col">
+          <h4 style="font-weight: bold">Route Grade:</h4>
+          <h5><%= @photo.route_grade %></h5>
+        </div>
+        <div class="col" style="margin-left: 125px;">
+          <% if  current_user != nil %>
+            <% if Like.where(user_id: current_user.id).where(photo_id: @photo.id).take == nil %>
+                <div class="btn-group mr-2" role="group">
+                  <%= bootstrap_form_with model: @like, url: likes_path(photo_id: @photo.id), method: :post, local: true do |f| %>
+                  <%= f.hidden_field :user_id, value: current_user.id %>
+                  <%= f.hidden_field :photo_id, value: @photo.id %>                    
+                  <%= f.submit "Like", class: "btn btn-primary" %>
+                  <% end %>
+              </div>
+            <% else %>
+              <div class="btn-group mr-2" role="group">
+                  <%= link_to "Unlike", like_path(user_id: current_user.id, photo_id: @photo.id), method: :delete, class: "btn btn-danger" %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      
       <br>
       <h4 style="font-weight: bold">Route Style:</h4>
       <h5><%= @photo.route_style %></h5>

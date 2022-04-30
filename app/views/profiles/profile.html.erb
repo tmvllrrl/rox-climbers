@@ -55,21 +55,6 @@
                             <a href="#" class="btn btn-primary">Delete</a>
                         <% end %>
 
-                        <% if  current_user != nil %>
-                            <% if Like.where(user_id: current_user.id).where(photo_id: photo.id).take == nil %>
-                                 <div class="btn-group mr-2" role="group">
-                                    <%= bootstrap_form_with model: @like, url: likes_path, method: :post, local: true do |f| %>
-                                    <%= f.hidden_field :user_id, value: current_user.id %>
-                                    <%= f.hidden_field :photo_id, value: photo.id %>                    
-                                    <%= f.submit "Like", class: "btn btn-primary" %>
-                                    <% end %>
-                                </div>
-                            <% else %>
-                                <div class="btn-group mr-2" role="group">
-                                    <%= link_to "Unlike", like_path(user_id: current_user.id,photo_id:photo.id), method: :delete, class: "btn btn-danger" %>
-                                </div>
-                            <% end %>
-                        <% end %>
                     </div>
                 </div>
             </div> 
