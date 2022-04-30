@@ -1,13 +1,20 @@
 class LikesController < ApplicationController
-    def create
-        @photo = Photo.find(params[:photo_id])
-        is_like = params[:is_like]
-        if is_like == "0"
-          is_like = false
-        elsif is_like == "1"
-          is_like = true
-        end
-        @like = @photo.likes.build(params.permit(:like, :is_like))
-        @like.save
+  def create
+    @like= Like.new(params.require(:like).permit(:user_id, :photo_id, :is_like))
+    if @like.save
+        flash[:success] = "You have liked this photo"
+    else
     end
+  end
+
+  def destroy
+    @like = Like.where(user_id: params[:user_id]).where(photo_id: params[:photo_id]).take
+    @user = User.find(params[:photo_id])
+    @like.destroy
+    flash[:error] = "You have unliked this photo!"
+    redirect_to profile_url(email: @user.email)
+  end
+
 end
+
+
