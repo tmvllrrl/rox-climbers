@@ -19,12 +19,18 @@ Rails.application.routes.draw do
   post 'photos/:photo_id/comments', to: 'comments#create'
   get 'photos/:photo_id/comments/new', to: 'comments#new', as: 'new_photo_comment'
   get 'photos/:photo_id/likes' , to: 'likes#create'
-  
+  get 'photos/:photo_id/favorites' , to: 'favorites#create'
+
   get 'explores/', to: 'explores#index', as: 'explores'
 
   get 'location', to: 'maps#location', as: 'location'
 
   post 'likes', to: 'likes#create'
   delete 'likes', to: 'likes#destroy', as: 'like'
+
+  get 'favorites/', to: 'favorites#index', as: 'favorites'
+  post 'favorites', to: 'favorites#create'
+  delete 'favorites', to: 'favorites#destroy', as: 'favorite'
+
 
 end
