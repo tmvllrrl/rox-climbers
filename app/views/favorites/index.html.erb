@@ -9,11 +9,11 @@
     Sort
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <%= link_to 'Most Recent', photos_path(order: "updated_at"), class: "dropdown-item" %>
-    <%= link_to 'Grade: Low to High', photos_path(order: "route_grade"), class: "dropdown-item" %>
-    <%= link_to 'Grade: High to Low', photos_path(order: "route_grade_desc"), class: "dropdown-item" %>
-    <%= link_to 'Route Location', photos_path(order: "route_location"), class: "dropdown-item" %>
-    <%= link_to 'Route Style', photos_path(order: "route_style"), class: "dropdown-item" %>
+    <%= link_to 'Most Recent', favorites_path(order: "updated_at"), class: "dropdown-item" %>
+    <%= link_to 'Grade: Low to High', favorites_path(order: "route_grade"), class: "dropdown-item" %>
+    <%= link_to 'Grade: High to Low', favorites_path(order: "route_grade_desc"), class: "dropdown-item" %>
+    <%= link_to 'Route Location', favorites_path(order: "route_location"), class: "dropdown-item" %>
+    <%= link_to 'Route Style', favorites_path(order: "route_style"), class: "dropdown-item" %>
 
   </div>
 </div>

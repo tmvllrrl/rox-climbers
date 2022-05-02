@@ -37,7 +37,7 @@
                   <%= bootstrap_form_with model: @favorite, url: favorites_path(photo_id: @photo.id), method: :post, local: true do |f| %>
                   <%= f.hidden_field :user_id, value: current_user.id %>
                   <%= f.hidden_field :photo_id, value: @photo.id %>                    
-                  <%= f.submit "favorite", class: "btn btn-primary" %>
+                  <%= f.submit "Favorite", class: "btn btn-primary" %>
                   <% end %>
               </div>
             <% else %>
