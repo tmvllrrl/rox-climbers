@@ -54,7 +54,7 @@
                         <h6><%=  link_to "Show", photo_path(photo),class: 'btn btn-primary' %></h6>
 
                         <% if current_user == @user %>
-                            <a href="#" class="btn btn-primary">Edit</a>
+                            <%= link_to "Edit", edit_photo_path(photo), class: "btn btn-primary" %>
                             <%= link_to "Delete", photo_path(photo), method: :delete, class: "btn btn-danger"  %>
                         <% end %>
 

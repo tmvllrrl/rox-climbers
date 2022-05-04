@@ -1,0 +1,64 @@
+<br>
+<h1>Edit Photo</h1>
+<br>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script>
+    function showImage(input) {
+        if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#image_upload_id')
+            .attr('src', e.target.result)
+            .width("60vh");
+        };
+
+        reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <%= bootstrap_form_with model: @photo, url: photo_path(@photo), method: :patch, local: true do |f| %>
+            <%= image_tag @photo.route_image, style: "width: 60vh; margin-bottom: 20px"  %>
+        
+            <%= f.text_field :route_title %>
+            <%= f.text_field :route_grade %>
+
+            <%= f.label :age_label, "Route location"%>
+            <%= f.radio_button :route_location, "Middle Front" %>
+            <%= f.radio_button :route_location, "Middle Back" %>
+            <%= f.radio_button :route_location, "Middle Left" %>
+            <%= f.radio_button :route_location, "Middle Right" %>
+            <%= f.radio_button :route_location, "Back Wall" %>
+            <%= f.radio_button :route_location, "The Cave" %>
+            <%= f.radio_button :route_location, "Back Right" %>
+            <%= f.radio_button :route_location, "Comp Wall" %>
+            <br>
+
+            <%= f.label :age_label, "Route style"%>
+            <%= f.radio_button :route_style, "Jugs" %>
+            <%= f.radio_button :route_style, "Slopers" %>
+            <%= f.radio_button :route_style, "Crimps" %>
+            <%= f.radio_button :route_style, "Slab" %>
+            <%= f.radio_button :route_style, "Pinches" %>
+            <br>
+            <%= f.text_area :route_description %>
+            
+            <%= f.file_field :route_image, onchange: "showImage(this);" %>
+
+            <%= f.submit %>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+<br>
+<p>
+    <%= link_to "Cancel", profile_path(email: current_user.email), class: "btn btn-primary" %>
+</p>
+
+<br>
