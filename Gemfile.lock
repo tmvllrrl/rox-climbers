@@ -1,3 +1,14 @@
+GIT
+  remote: https://github.com/elastic/elasticsearch-rails.git
+  revision: b66fe71cc4b9b10069bf6d39dbbfcc0b117a08a5
+  branch: main
+  specs:
+    elasticsearch-model (7.2.1)
+      activesupport (> 3)
+      elasticsearch (~> 7)
+      hashie
+    elasticsearch-rails (7.2.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -92,10 +103,42 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    elasticsearch (7.17.1)
+      elasticsearch-api (= 7.17.1)
+      elasticsearch-transport (= 7.17.1)
+    elasticsearch-api (7.17.1)
+      multi_json
+    elasticsearch-transport (7.17.1)
+      faraday (~> 1)
+      multi_json
     erubi (1.10.0)
+    faraday (1.10.0)
+      faraday-em_http (~> 1.0)
+      faraday-em_synchrony (~> 1.0)
+      faraday-excon (~> 1.1)
+      faraday-httpclient (~> 1.0)
+      faraday-multipart (~> 1.0)
+      faraday-net_http (~> 1.0)
+      faraday-net_http_persistent (~> 1.0)
+      faraday-patron (~> 1.0)
+      faraday-rack (~> 1.0)
+      faraday-retry (~> 1.0)
+      ruby2_keywords (>= 0.0.4)
+    faraday-em_http (1.0.0)
+    faraday-em_synchrony (1.0.0)
+    faraday-excon (1.1.0)
+    faraday-httpclient (1.0.1)
+    faraday-multipart (1.0.3)
+      multipart-post (>= 1.2, < 3)
+    faraday-net_http (1.0.1)
+    faraday-net_http_persistent (1.2.0)
+    faraday-patron (1.0.0)
+    faraday-rack (1.0.0)
+    faraday-retry (1.0.3)
     ffi (1.15.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    hashie (5.0.0)
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
@@ -120,6 +163,8 @@ GEM
     mini_portile2 (2.8.0)
     minitest (5.15.0)
     msgpack (1.5.1)
+    multi_json (1.15.0)
+    multipart-post (2.1.1)
     nio4r (2.5.8)
     nokogiri (1.13.4)
       mini_portile2 (~> 2.8.0)
@@ -175,6 +220,7 @@ GEM
     rexml (3.2.5)
     ruby-vips (2.1.4)
       ffi (~> 1.12)
+    ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -239,6 +285,8 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise
+  elasticsearch-model!
+  elasticsearch-rails!
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   listen (~> 3.3)

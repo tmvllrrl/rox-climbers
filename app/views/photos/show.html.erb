@@ -2,10 +2,10 @@
 <h1><%= @photo.route_title %></h1>
 <br>
 
-
 <div class="container">
   <div class="row">
     <div class="col">
+      <h3><%= link_to @photo.creator.email, profile_path(email: @photo.creator.email)%></h3>
       <h4 style="font-weight: bold">Route Image: </h4>
       <%= image_tag @photo.route_image, style: "width: 60vh; margin-bottom: 20px"  %>
       <div class="row">
@@ -55,7 +55,7 @@
       <h5><%= @photo.route_style %></h5>
       <br>
       <h4 style="font-weight: bold">Route Location:</h4>
-      <h5><%= @photo.route_location%></h5>
+      <h5><%= link_to @photo.route_location, location_path(where: @photo.route_location, route_title: @photo.route_title)%></h5>
       <br>
       <h4 style="font-weight: bold">Route Description:</h4>
       <h5><%= @photo.route_description %></h5>
