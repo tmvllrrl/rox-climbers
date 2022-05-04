@@ -5,7 +5,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h4><%= link_to @photo.creator.email, profile_path(email: @photo.creator.email)%></h4>
+      <h3><%= link_to @photo.creator.email, profile_path(email: @photo.creator.email)%></h3>
       <h4 style="font-weight: bold">Route Image: </h4>
       <%= image_tag @photo.route_image, style: "width: 60vh; margin-bottom: 20px"  %>
       <div class="row">

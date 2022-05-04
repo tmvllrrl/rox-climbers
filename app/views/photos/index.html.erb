@@ -31,7 +31,7 @@
                         <h6><%= photo.route_location %></h6>
                         <h6><%= photo.route_grade %></h6>
                         <h6><%= photo.route_style %></h6>
-                        <h6><%=  link_to "Show", photo_path(photo),class: 'btn btn-primary' %></h6>
+                        <h6><%=  link_to "Show", photo_path(photo),class: 'btn btn-primary stretched-link' %></h6>
                         
                         <% if current_user == photo.creator %>
                           <a href="#" class="btn btn-primary">Edit</a>
