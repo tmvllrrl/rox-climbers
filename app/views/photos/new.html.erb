@@ -27,8 +27,8 @@
         <div class="col">
             <%= bootstrap_form_with model: @photo, url: photos_path, method: :post, local: true do |f| %>
 
-            <%= f.text_field :route_title %>
-            <%= f.text_field :route_grade %>
+            <%= f.text_field :route_title, placeholder: "Enter title" %>
+            <%= f.text_field :route_grade, placeholder: "Enter grade (i.e. V2 or V4/V5)" %>
 
             <%= f.label :age_label, "Route location"%>
             <%= f.radio_button :route_location, "Middle Front" %>
@@ -48,7 +48,7 @@
             <%= f.radio_button :route_style, "Slab" %>
             <%= f.radio_button :route_style, "Pinches" %>
             <br>
-            <%= f.text_area :route_description %>
+            <%= f.text_area :route_description, placeholder: "Give a description of the route" %>
             
             <%= f.file_field :route_image, onchange: "showImage(this);" %>
 

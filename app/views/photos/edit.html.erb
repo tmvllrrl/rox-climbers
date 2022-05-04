@@ -21,9 +21,11 @@
 
 <div class="container">
     <div class="row">
+        <div class="col" >
+            <%= image_tag @photo.route_image, style: "width: 60vh;", id: "image_upload_id"  %>
+        </div>
         <div class="col">
             <%= bootstrap_form_with model: @photo, url: photo_path(@photo), method: :patch, local: true do |f| %>
-            <%= image_tag @photo.route_image, style: "width: 60vh; margin-bottom: 20px"  %>
         
             <%= f.text_field :route_title %>
             <%= f.text_field :route_grade %>
