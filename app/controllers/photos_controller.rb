@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
-    before_action :require_permission, except: [:index, :new, :create, :show, :create_like]
+    before_action :require_permission, except: [:index, :new, :create, :show, :create_like, :edit, :update, :destroy, :create_favorite]
 
     def require_permission
         if Photo.find(params[:id]).creator != current_user
@@ -12,6 +12,8 @@ class PhotosController < ApplicationController
         @photo = Photo.find(params[:id])
         @comments = @photo.comments.order(created_at: :desc)
         @comment = Comment.new
+        @favorite = Favorite.new
+        @like = Like.new
         render :show
     end
 
@@ -74,6 +76,29 @@ class PhotosController < ApplicationController
             render :new
         end
     end
+
+    def edit
+        @photo = Photo.find(params[:id])
+        render :edit
+    end
+
+    def update
+        @photo = Photo.find(params[:id])
+        if @photo.update(params.require(:photo).permit(:route_title, :route_grade, :route_location, :route_description, :route_style, :route_image))
+          flash[:success] = "Photo successfully updated!"
+          redirect_to profile_path(email: current_user.email)
+        else
+          flash.now[:error] = "Photo update failed"
+          render :edit
+        end
+      end
+
+    def destroy
+        @photo = Photo.find(params[:id])
+        @photo.destroy
+        flash[:success] = "The photo was successfully destroyed."
+        redirect_to profile_path(email: current_user.email)
+    end
     
     
     def create_like
@@ -85,6 +110,17 @@ class PhotosController < ApplicationController
         end
         like = Like.find_or_create_by(is_like:is_like)
         like.save
+    end
+
+    def create_favorite
+        is_favorite = params[:is_favorite]
+        if is_favorite == "0"
+          is_favorite = false
+        elsif is_favorite == "1"
+          is_favorite = true
+        end
+        favorite = Favorite.find_or_create_by(is_favorite:is_favorite)
+        favorite.save
     end
    
 end

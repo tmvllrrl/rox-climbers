@@ -1,5 +1,5 @@
 <br>
-<h1>Add a Photo</h1>
+<h1>Edit Photo</h1>
 <br>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -21,14 +21,14 @@
 
 <div class="container">
     <div class="row">
-        <div class="col">
-            <%= image_tag "no_image_preview.jpg", id: "image_upload_id" , style: "width: 60vh" %>
+        <div class="col" >
+            <%= image_tag @photo.route_image, style: "width: 60vh;", id: "image_upload_id"  %>
         </div>
         <div class="col">
-            <%= bootstrap_form_with model: @photo, url: photos_path, method: :post, local: true do |f| %>
-
-            <%= f.text_field :route_title, placeholder: "Enter title" %>
-            <%= f.text_field :route_grade, placeholder: "Enter grade (i.e. V2 or V4/V5)" %>
+            <%= bootstrap_form_with model: @photo, url: photo_path(@photo), method: :patch, local: true do |f| %>
+        
+            <%= f.text_field :route_title %>
+            <%= f.text_field :route_grade %>
 
             <%= f.label :age_label, "Route location"%>
             <%= f.radio_button :route_location, "Middle Front" %>
@@ -48,7 +48,7 @@
             <%= f.radio_button :route_style, "Slab" %>
             <%= f.radio_button :route_style, "Pinches" %>
             <br>
-            <%= f.text_area :route_description, placeholder: "Give a description of the route" %>
+            <%= f.text_area :route_description %>
             
             <%= f.file_field :route_image, onchange: "showImage(this);" %>
 
@@ -60,7 +60,7 @@
 
 <br>
 <p>
-    <%= link_to "Cancel", photos_path, class: "btn btn-primary" %>
+    <%= link_to "Cancel", profile_path(email: current_user.email), class: "btn btn-primary" %>
 </p>
 
 <br>

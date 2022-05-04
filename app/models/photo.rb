@@ -52,6 +52,13 @@ class Photo < ApplicationRecord
         foreign_key: 'photo_id',
         inverse_of: :photo,
         dependent: :destroy
+    )
+    has_many(
+        :favorites,
+        class_name: 'Favorite',
+        foreign_key: 'photo_id',
+        inverse_of: :photo,
+        dependent: :destroy
     ) 
 
 end
