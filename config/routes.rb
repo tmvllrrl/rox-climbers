@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post 'photos', to: 'photos#create'
   get 'photos/new', to: 'photos#new', as: 'new_photo'
   get 'photos/:id', to: 'photos#show', as: 'photo'
+  delete 'photos/:id', to: 'photos#destroy'
 
   get 'profiles/', to: 'profiles#show', as: 'profile'
 

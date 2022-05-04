@@ -76,6 +76,13 @@ class PhotosController < ApplicationController
             render :new
         end
     end
+
+    def destroy
+        @photo = Photo.find(params[:id])
+        @photo.destroy
+        flash[:success] = "The photo was successfully destroyed."
+        redirect_to profile_path(email: current_user.email)
+    end
     
     
     def create_like
