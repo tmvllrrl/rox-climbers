@@ -31,6 +31,9 @@
             </div>
         <% end %>
         <div class="btn-group mr-2" role="group">
+            <%= link_to "Favorites", favorites_path(user_id: @user.id), class: "btn btn-dark" %>
+        </div>
+        <div class="btn-group mr-2" role="group">
             <%= link_to "Followers", follows_path(type: "followers", user_id: @user.id), class: "btn btn-dark" %>
         </div>
         <div class="btn-group mr-2" role="group">
