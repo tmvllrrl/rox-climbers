@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
-    before_action :require_permission, except: [:index, :new, :create, :show, :create_like]
+    before_action :require_permission, except: [:index, :new, :create, :show, :create_like, :edit, :update, :destroy, :create_favorite]
 
     def require_permission
         if Photo.find(params[:id]).creator != current_user
@@ -76,6 +76,22 @@ class PhotosController < ApplicationController
             render :new
         end
     end
+
+    def edit
+        @photo = Photo.find(params[:id])
+        render :edit
+    end
+
+    def update
+        @photo = Photo.find(params[:id])
+        if @photo.update(params.require(:photo).permit(:route_title, :route_grade, :route_location, :route_description, :route_style, :route_image))
+          flash[:success] = "Photo successfully updated!"
+          redirect_to profile_path(email: current_user.email)
+        else
+          flash.now[:error] = "Photo update failed"
+          render :edit
+        end
+      end
 
     def destroy
         @photo = Photo.find(params[:id])

@@ -5,10 +5,13 @@ Rails.application.routes.draw do
   root to: redirect('/photos/')
 
   get 'photos/', to: 'photos#index', as: 'photos'
+  get 'photos/:id/edit', to: 'photos#edit', as: 'edit_photo'
   post 'photos', to: 'photos#create'
   get 'photos/new', to: 'photos#new', as: 'new_photo'
   get 'photos/:id', to: 'photos#show', as: 'photo'
   delete 'photos/:id', to: 'photos#destroy'
+  patch 'photos/:id', to: 'photos#update'
+  
 
   get 'profiles/', to: 'profiles#show', as: 'profile'
 
